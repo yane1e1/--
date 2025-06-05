@@ -65,3 +65,30 @@
 .track-list li:last-child {
     border-bottom: none;
 }
+
+/* 搜尋區塊樣式 */
+.input-group {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
+
+.input-group .form-control,
+.input-group .input-group-text,
+.input-group .btn {
+    border: none;
+}
+
+.input-group .form-control:focus {
+    box-shadow: none;
+}
+
+.input-group .btn-primary {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* 無搜尋結果提示樣式 */
+.text-muted {
+    font-size: 1.1rem;
+    margin: 2rem 0;
+}
