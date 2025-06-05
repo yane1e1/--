@@ -44,6 +44,26 @@
     <section id="albums" class="py-5">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">熱門專輯</h2>
+            
+            <!-- 搜尋和過濾區塊 -->
+            <div class="row mb-4" data-aos="fade-up">
+                <div class="col-md-6 mb-3">
+                    <div class="input-group">
+                        <input type="text" id="searchInput" class="form-control" placeholder="搜尋專輯或藝人名稱...">
+                        <button class="btn btn-primary" type="button" id="searchBtn">
+                            <i class="bi bi-search"></i> 搜尋
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text">發行日期</span>
+                        <input type="month" id="dateFilter" class="form-control">
+                        <button class="btn btn-outline-secondary" type="button" id="resetFilterBtn">重置</button>
+                    </div>
+                </div>
+            </div>
+
             <div class="row" id="albumList">
                 <!-- 專輯卡片將由 JavaScript 動態生成 -->
             </div>

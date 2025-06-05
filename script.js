@@ -118,7 +118,72 @@ function showAlbumDetails(albumId) {
     modal.show();
 }
 
-// 當頁面載入完成時渲染專輯列表
+// 搜尋和過濾功能
+function filterAlbums() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const dateFilter = document.getElementById('dateFilter').value;
+    const albumList = document.getElementById('albumList');
+    albumList.innerHTML = '';
+
+    const filteredAlbums = albums.filter(album => {
+        const matchesSearch = 
+            album.title.toLowerCase().includes(searchTerm) ||
+            album.artist.toLowerCase().includes(searchTerm);
+        
+        const matchesDate = !dateFilter || 
+            album.releaseDate.startsWith(dateFilter);
+
+        return matchesSearch && matchesDate;
+    });
+
+    if (filteredAlbums.length === 0) {
+        albumList.innerHTML = `
+            <div class="col-12 text-center">
+                <p class="text-muted">沒有找到符合條件的專輯</p>
+            </div>
+        `;
+        return;
+    }
+
+    filteredAlbums.forEach(album => {
+        const card = document.createElement('div');
+        card.className = 'col-md-4';
+        card.setAttribute('data-aos', 'fade-up');
+        card.innerHTML = `
+            <div class="album-card" onclick="showAlbumDetails(${album.id})">
+                <img src="${album.cover}" alt="${album.title}">
+                <div class="album-info">
+                    <h3>${album.title}</h3>
+                    <p>${album.artist}</p>
+                    <small class="text-muted">發行日期: ${album.releaseDate}</small>
+                </div>
+            </div>
+        `;
+        albumList.appendChild(card);
+    });
+}
+
+// 事件監聽器設置
 document.addEventListener('DOMContentLoaded', () => {
     renderAlbums();
+    
+    // 搜尋按鈕點擊事件
+    document.getElementById('searchBtn').addEventListener('click', filterAlbums);
+    
+    // 搜尋輸入框 Enter 鍵事件
+    document.getElementById('searchInput').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            filterAlbums();
+        }
+    });
+    
+    // 日期過濾器變更事件
+    document.getElementById('dateFilter').addEventListener('change', filterAlbums);
+    
+    // 重置按鈕點擊事件
+    document.getElementById('resetFilterBtn').addEventListener('click', () => {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('dateFilter').value = '';
+        renderAlbums();
+    });
 });
