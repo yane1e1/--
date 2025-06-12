@@ -9,43 +9,136 @@ const albums = [
         artist: "NewJeans",
         releaseDate: "2023-07-21",
         cover: "https://source.unsplash.com/random/400x400/?album-cover-1",
-        description: "NewJeans 的第二張迷你專輯，包含熱門曲目 'Super Shy' 和 'ETA'。",
+        description: "NewJeans 的第二張迷你專輯，包含熱門曲目 'Super Shy' 和 'ETA'。展現了更成熟的音樂風格與獨特魅力。",
+        genre: "K-pop, R&B",
+        price: "NT$ 450",
+        publisher: "ADOR Entertainment",
+        trackCount: 5,
+        totalLength: "16分23秒",
         tracks: [
-            "New Jeans",
-            "Super Shy",
-            "ETA",
-            "Cool With You",
-            "Get Up"
+            {
+                name: "New Jeans",
+                length: "3:12",
+                description: "開場曲目，展現清新活力的舞曲"
+            },
+            {
+                name: "Super Shy",
+                length: "2:34",
+                description: "充滿青春感的熱門主打歌"
+            },
+            {
+                name: "ETA",
+                length: "3:41",
+                description: "節奏輕快的現代R&B歌曲"
+            },
+            {
+                name: "Cool With You",
+                length: "3:01",
+                description: "浪漫情歌，展現柔美嗓音"
+            },
+            {
+                name: "Get Up",
+                length: "3:55",
+                description: "專輯同名歌曲，富有能量的舞曲"
+            }
         ]
-    },
-    {
+    },    {
         id: 2,
-        title: "Girls",
+        title: "BORN PINK",
         artist: "BLACKPINK",
         releaseDate: "2022-09-16",
         cover: "https://source.unsplash.com/random/400x400/?album-cover-2",
-        description: "BLACKPINK 第二張正規專輯，收錄多首熱門歌曲。",
+        description: "BLACKPINK 第二張正規專輯，延續其獨特的音樂風格，融合Hip-hop與流行元素，展現了更成熟的音樂製作與表演實力。",
+        genre: "K-pop, Hip-hop, EDM",
+        price: "NT$ 499",
+        publisher: "YG Entertainment",
+        trackCount: 8,
+        totalLength: "24分54秒",
         tracks: [
-            "Pink Venom",
-            "Shut Down",
-            "Typa Girl",
-            "Ready For Love",
-            "Hard to Love"
+            {
+                name: "Pink Venom",
+                length: "3:07",
+                description: "前導主打歌，融合東方元素的Hip-hop曲風"
+            },
+            {
+                name: "Shut Down",
+                length: "2:55",
+                description: "主打歌，采用古典音樂元素混搭現代節奏"
+            },
+            {
+                name: "Typa Girl",
+                length: "3:21",
+                description: "展現自信態度的英文歌曲"
+            },
+            {
+                name: "Ready For Love",
+                length: "2:57",
+                description: "與電競遊戲PUBG合作的特別曲目"
+            },
+            {
+                name: "Hard to Love",
+                length: "2:43",
+                description: "Rosé個人獨唱曲目，展現獨特嗓音"
+            },
+            {
+                name: "The Happiest Girl",
+                length: "3:33",
+                description: "抒情歌曲，展現成員們細膩的感情表達"
+            },
+            {
+                name: "Tally",
+                length: "3:03",
+                description: "帶有R&B風格的英文歌曲"
+            },
+            {
+                name: "Yeah Yeah Yeah",
+                length: "3:15",
+                description: "復古風格的流行舞曲"
+            }
         ]
-    },
-    {
+    },    {
         id: 3,
         title: "Face",
-        artist: "Jimin",
+        artist: "Jimin (BTS)",
         releaseDate: "2023-03-24",
         cover: "https://source.unsplash.com/random/400x400/?album-cover-3",
-        description: "BTS 成員 Jimin 首張個人專輯，展現獨特魅力。",
+        description: "BTS成員朴智旻首張個人專輯，透過音樂展現獨特的音樂風格與藝術視野。專輯中完美融合R&B、流行等多種音樂元素，展現出作為獨立音樂人的全新面貌。",
+        genre: "K-pop, R&B, Pop",
+        price: "NT$ 475",
+        publisher: "BIGHIT MUSIC",
+        trackCount: 6,
+        totalLength: "21分36秒",
         tracks: [
-            "Face-off",
-            "Like Crazy",
-            "Alone",
-            "Set Me Free Pt.2",
-            "Like Crazy (English Version)"
+            {
+                name: "Face-off",
+                length: "3:31",
+                description: "開場曲，展現強烈的節奏感與獨特音色"
+            },
+            {
+                name: "Like Crazy",
+                length: "3:23",
+                description: "主打歌，富有魅力的舞曲風格"
+            },
+            {
+                name: "Alone",
+                length: "3:56",
+                description: "富有感情的抒情歌曲"
+            },
+            {
+                name: "Set Me Free Pt.2",
+                length: "3:29",
+                description: "充滿力量感的說唱舞曲"
+            },
+            {
+                name: "Like Crazy (English Version)",
+                length: "3:24",
+                description: "英文版主打歌"
+            },
+            {
+                name: "Like Crazy (Instrumental)",
+                length: "3:53",
+                description: "主打歌器樂版本"
+            }
         ]
     }
 ];
@@ -86,16 +179,57 @@ function showAlbumDetails(albumId) {
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-6">
-                                <img src="${album.cover}" alt="${album.title}" class="img-fluid">
+                            <div class="col-md-5">
+                                <img src="${album.cover}" alt="${album.title}" class="img-fluid album-cover">
+                                <div class="album-price mt-3">
+                                    <h3 class="text-primary">${album.price || 'NT$ 450'}</h3>
+                                    <button class="btn btn-primary btn-lg w-100 mt-2">
+                                        <i class="bi bi-cart-plus"></i> 加入購物車
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <h4>${album.artist}</h4>
-                                <p>${album.description}</p>
-                                <h5>收錄曲目：</h5>
-                                <ul class="track-list">
-                                    ${album.tracks.map(track => `<li>${track}</li>`).join('')}
-                                </ul>
+                            <div class="col-md-7">
+                                <div class="album-details">
+                                    <h4 class="artist-name">${album.artist}</h4>
+                                    <p class="description">${album.description}</p>
+                                    
+                                    <div class="album-meta">
+                                        <div class="meta-item">
+                                            <span class="label">發行日期：</span>
+                                            <span class="value">${album.releaseDate}</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="label">音樂類型：</span>
+                                            <span class="value">${album.genre || 'K-pop'}</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="label">發行公司：</span>
+                                            <span class="value">${album.publisher || '未提供'}</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="label">專輯長度：</span>
+                                            <span class="value">${album.totalLength || '未提供'}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <h5 class="mt-4">收錄曲目：</h5>
+                                    <div class="track-list">
+                                        ${Array.isArray(album.tracks) ? album.tracks.map((track, index) => `
+                                            <div class="track-item">
+                                                <div class="track-number">${(index + 1).toString().padStart(2, '0')}</div>
+                                                <div class="track-info">
+                                                    <div class="track-name">${typeof track === 'object' ? track.name : track}</div>
+                                                    ${typeof track === 'object' ? `
+                                                        <div class="track-details">
+                                                            <span class="track-length">${track.length}</span>
+                                                            <p class="track-description">${track.description}</p>
+                                                        </div>
+                                                    ` : ''}
+                                                </div>
+                                            </div>
+                                        `).join('') : ''}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
